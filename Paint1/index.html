@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paint</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+
+    <div class="menu-bar">
+        <div class="menu-item">File</div>
+        <div class="menu-item">Home</div>
+        <div class="menu-item">View</div>
+    </div>
+
+
+    <div class="toolbar">
+        <div class="toolbar-row">
+
+            <div class="tool-section clipboard">
+                <div class="tool-group">
+                    <div class="col">
+                        <button class="tool-btn large paste">
+                            <div class="tool-icon">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#333"
+                                    stroke-width="1.6">
+                                    <rect x="9" y="3" width="6" height="3" rx="1" />
+                                    <rect x="5" y="6" width="14" height="14" rx="2" />
+                                </svg>
+                            </div>
+                            <div class="tool-label">Paste</div>
+                            <div class="tool-dropdown">▼</div>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button class="tool-btn small" data-action="undo" title="Undo">
+                            <div class="tool-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333"
+                                    stroke-width="1.8">
+                                    <polyline points="9 14 4 9 9 4" />
+                                    <path d="M20 20a8 8 0 0 0-8-8H4" />
+                                </svg>
+                            </div>
+                            <div class="tool-label">Undo</div>
+                        </button>
+                        <button class="tool-btn small" data-action="redo" title="Redo">
+                            <div class="tool-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333"
+                                    stroke-width="1.8">
+                                    <polyline points="15 10 20 15 15 20" />
+                                    <path d="M4 4a8 8 0 0 1 8 8h8" />
+                                </svg>
+                            </div>
+                            <div class="tool-label">Redo</div>
+                        </button>
+                        <button class="tool-btn small" data-action="clear" title="Clear">
+                            <div class="tool-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333"
+                                    stroke-width="1.8">
+                                    <rect x="3" y="6" width="18" height="14" rx="2" />
+                                    <path d="M3 6h18M8 6l1-2h6l1 2" />
+                                    <line x1="10" y1="11" x2="10" y2="17" />
+                                    <line x1="14" y1="11" x2="14" y2="17" />
+                                </svg>
+                            </div>
+                            <div class="tool-label">Clear</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="section-title">Clipboard</div>
+            </div>
+
+
+            <div class="tool-section image">
+                <div class="tool-group">
+                    <div class="col">
+                        <button class="tool-btn large select">
+                            <div class="tool-icon">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#333"
+                                    stroke-width="1.8">
+                                    <rect x="5" y="5" width="14" height="14" stroke-dasharray="3 2" />
+                                </svg>
+                            </div>
+                            <div class="tool-label">Select</div>
+                            <div class="tool-dropdown">▼</div>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button class="tool-btn small crop">
+                            <div class="tool-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333"
+                                    stroke-width="1.8">
+                                    <path d="M6 2v4H2" />
+                                    <path d="M22 18h-4v4" />
+                                    <rect x="8" y="8" width="10" height="10" />
+                                </svg>
+                            </div>
+                            <div class="tool-label">Crop</div>
+                        </button>
+                        <button class="tool-btn small resize">
+                            <div class="tool-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333"
+                                    stroke-width="1.8">
+                                    <polyline points="4 20 20 4" />
+                                    <polyline points="14 4 20 4 20 10" />
+                                </svg>
+                            </div>
+                            <div class="tool-label">Resize</div>
+                        </button>
+                        <button class="tool-btn small rotate">
+                            <div class="tool-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333"
+                                    stroke-width="1.8">
+                                    <path d="M4 11a8 8 0 1 1 8 8" />
+                                    <polyline points="8 7 4 11 8 15" />
+                                </svg>
+                            </div>
+                            <div class="tool-label">Rotate</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="section-title">Image</div>
+            </div>
+
+            <div class="tool-section tools">
+                <div class="tool-group tools-grid">
+                    <button class="tool-btn icon" title="Pencil">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2">
+                            <path d="M3 21l3-1 13-13a2 2 0 0 0-3-3L3 17v4z" />
+                        </svg>
+                    </button>
+                    <button class="tool-btn icon" title="Fill">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#333">
+                            <path d="M12 3l9 9-9 9-9-9 9-9z" />
+                        </svg>
+                    </button>
+                    <button class="tool-btn icon" title="Text">A</button>
+                    <button class="tool-btn icon" title="Eraser">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2">
+                            <path d="M16 3l5 5-9 9H7L2 12l9-9z" />
+                        </svg>
+                    </button>
+                    <button class="tool-btn icon" title="Eyedropper">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2">
+                            <path d="M19 2l3 3-7 7-3-3 7-7z" />
+                            <path d="M2 22l8-8" />
+                        </svg>
+                    </button>
+                    <button class="tool-btn icon" title="Magnifier">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2">
+                            <circle cx="11" cy="11" r="7" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="section-title">Tools</div>
+            </div>
+
+
+            <div class="tool-section brushes">
+                <div class="tool-group">
+                    <div class="brushes-grid">
+                        <button class="tool-btn icon is-active" data-brush="pencil" title="Pencil">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2">
+                                <path d="M3 21l3-1 13-13a2 2 0 0 0-3-3L3 17v4z" />
+                            </svg>
+                        </button>
+                        <button class="tool-btn icon" data-brush="pen" title="Pen">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2">
+                                <path d="M12 19l7-7-4-4-7 7-2 6z" />
+                            </svg>
+                        </button>
+                        <button class="tool-btn icon" data-brush="marker" title="Marker">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="#333">
+                                <rect x="7" y="5" width="10" height="8" rx="2" />
+                                <rect x="5" y="15" width="14" height="4" />
+                            </svg>
+                        </button>
+                        <button class="tool-btn icon" data-brush="brush" title="Brush">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="#333">
+                                <path d="M19 2l3 3-9 9-3-3 9-9z" />
+                                <path d="M11 14c-1 0-2 .4-3 1s-2 1-3 1a3 3 0 0 0 6 0" />
+                            </svg>
+                        </button>
+                        <button class="tool-btn icon" data-brush="highlighter" title="Highlighter">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="#333">
+                                <rect x="4" y="6" width="16" height="6" rx="1" />
+                            </svg>
+                        </button>
+                        <button class="tool-btn icon" data-brush="calligraphy" title="Calligraphy">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2">
+                                <path d="M4 20c4-2 7-6 12-12l2-2" />
+                                <path d="M18 6c0 3 2 5 3 6" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="section-title">Brushes</div>
+                </div>
+            </div>
+
+
+            <div class="tool-section shapes">
+                <div class="tool-group">
+                    <div class="shapes-grid">
+                        <button class="tool-btn shape" title="Line"><svg width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="#333" stroke-width="2">
+                                <line x1="4" y1="20" x2="20" y2="4" />
+                            </svg></button>
+                        <button class="tool-btn shape" title="Curve"><svg width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="#333" stroke-width="2">
+                                <path d="M3 19c6-8 12-8 18-14" />
+                            </svg></button>
+                        <button class="tool-btn shape" title="Rectangle"><svg width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="#333" stroke-width="2">
+                                <rect x="4" y="6" width="16" height="12" rx="1" />
+                            </svg></button>
+                        <button class="tool-btn shape" title="Polygon"><svg width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="#333" stroke-width="2">
+                                <polygon points="12 3 21 9 17 21 7 21 3 9" />
+                            </svg></button>
+                        <button class="tool-btn shape" title="Ellipse"><svg width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="#333" stroke-width="2">
+                                <ellipse cx="12" cy="12" rx="8" ry="5" />
+                            </svg></button>
+                        <button class="tool-btn shape" title="Arrow"><svg width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="#333" stroke-width="2">
+                                <line x1="4" y1="12" x2="18" y2="12" />
+                                <polyline points="12 6 18 12 12 18" />
+                            </svg></button>
+                        <button class="tool-btn shape" title="Callout"><svg width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="#333" stroke-width="2">
+                                <rect x="3" y="5" width="16" height="10" rx="2" />
+                                <polyline points="8 15 6 20 12 16" />
+                            </svg></button>
+                        <button class="tool-btn shape" title="Lightning"><svg width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="#333" stroke-width="2">
+                                <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                            </svg></button>
+                        <button class="tool-btn shape" title="Heart"><svg width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="#333" stroke-width="2">
+                                <path
+                                    d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l8.8 8.8 8.8-8.8a5.5 5.5 0 0 0 0-7.8z" />
+                            </svg></button>
+                        <button class="tool-btn shape" title="Star"><svg width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="#333" stroke-width="2">
+                                <polygon points="12 2 15 8.5 22 9 17 13.5 18.5 20 12 16.5 5.5 20 7 13.5 2 9 9 8.5" />
+                            </svg></button>
+                        <button class="tool-btn shape" title="Triangle"><svg width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="#333" stroke-width="2">
+                                <polygon points="12 4 21 19 3 19" />
+                            </svg></button>
+                        <button class="tool-btn shape" title="Pentagon"><svg width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="#333" stroke-width="2">
+                                <polygon points="12 2 21 9 17 22 7 22 3 9" />
+                            </svg></button>
+                        <button class="tool-btn shape" title="Hexagon"><svg width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="#333" stroke-width="2">
+                                <polygon points="8 3 16 3 21 9 16 21 8 21 3 9" />
+                            </svg></button>
+                        <button class="tool-btn shape" title="Right Arrow"><svg width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2">
+                                <line x1="4" y1="12" x2="18" y2="12" />
+                                <polyline points="12 6 18 12 12 18" />
+                            </svg></button>
+                        <button class="tool-btn shape" title="Left Arrow"><svg width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2">
+                                <line x1="6" y1="12" x2="20" y2="12" />
+                                <polyline points="12 6 6 12 12 18" />
+                            </svg></button>
+                    </div>
+                </div>
+                <div class="shape-options">
+                    <button class="option-btn outline">Outline</button>
+                    <button class="option-btn fill">Fill</button>
+                </div>
+                <div class="section-title">Shapes</div>
+            </div>
+
+
+            <div class="tool-section size">
+                <div class="size-controls">
+                    <div class="size-btn thin"></div>
+                    <div class="size-btn medium"></div>
+                    <div class="size-btn thick"></div>
+                    <div class="size-dropdown">▼</div>
+                </div>
+                <div class="section-title">Size</div>
+            </div>
+
+
+            <div class="tool-section colors">
+                <div class="color-group">
+                    <div class="color-display">
+                        <div class="color-1">Color 1</div>
+                        <div class="color-2">Color 2</div>
+                    </div>
+                    <div class="color-palette">
+                        <div class="color-row">
+                            <div class="color-swatch" style="background: #000"></div>
+                            <div class="color-swatch" style="background: #fff; border-color: #ccc;"></div>
+                            <div class="color-swatch" style="background: #808080"></div>
+                            <div class="color-swatch" style="background: #c0c0c0"></div>
+                            <div class="color-swatch" style="background: #800000"></div>
+                            <div class="color-swatch" style="background: #ff0000"></div>
+                            <div class="color-swatch" style="background: #808000"></div>
+                            <div class="color-swatch" style="background: #ffff00"></div>
+                            <div class="color-swatch" style="background: #008000"></div>
+                            <div class="color-swatch" style="background: #00ff00"></div>
+                        </div>
+                        <div class="color-row">
+                            <div class="color-swatch" style="background: #008080"></div>
+                            <div class="color-swatch" style="background: #00ffff"></div>
+                            <div class="color-swatch" style="background: #000080"></div>
+                            <div class="color-swatch" style="background: #0000ff"></div>
+                            <div class="color-swatch" style="background: #800080"></div>
+                            <div class="color-swatch" style="background: #ff00ff"></div>
+                            <div class="color-swatch" style="background: #8B4513"></div>
+                            <div class="color-swatch" style="background: #FFA500"></div>
+                            <div class="color-swatch" style="background: #90EE90"></div>
+                            <div class="color-swatch" style="background: #ADD8E6"></div>
+                        </div>
+                    </div>
+                    <div class="edit-colors">
+                        <button class="edit-btn">Edit colors</button>
+                    </div>
+                </div>
+                <div class="section-title">Colors</div>
+            </div>
+
+            <!-- Paint 3D Section -->
+            <div class="tool-section paint3d">
+                <div class="section-title">Edit with Paint 3D</div>
+                <button class="tool-btn large paint3d-btn">
+                    <div class="tool-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.6">
+                            <path
+                                d="M12 3c-4.97 0-9 3.58-9 8 0 2.21 1.79 4 4 4h2.5a2.5 2.5 0 1 1 0 5 1.5 1.5 0 0 1-1.5-1.5" />
+                            <circle cx="8.5" cy="10" r="1.2" />
+                            <circle cx="12" cy="8.5" r="1.2" />
+                            <circle cx="15.5" cy="10.2" r="1.2" />
+                            <circle cx="14" cy="13" r="1.2" />
+                        </svg>
+                    </div>
+                    <div class="tool-label">Paint 3D</div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="canvas-container">
+        <div class="canvas-wrapper">
+            <canvas id="paintCanvas" width="800" height="600"></canvas>
+        </div>
+    </div>
+
+
+    <div class="status-bar">
+        <div class="status-left">
+            <span class="zoom-control">100%</span>
+        </div>
+        <div class="status-right">
+            <span class="canvas-size">1152 x 648px</span>
+        </div>
+    </div>
+
+    <script src="Lab1.js"></script>
+</body>
+
+</html>
